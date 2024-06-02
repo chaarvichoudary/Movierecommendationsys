@@ -16,8 +16,14 @@ Web Application: The recommendation system is deployed as a web application usin
 
 How to Use:
 
+Open your web browser and navigate to http://127.0.0.1:5000/.
+
 Input User ID: Users input their user ID into the web application.
 
 Receive Recommendations: The system processes the user ID and generates a list of recommended movies based on the user's preferences and behavior.
 
 Explore Recommendations: Users can explore the recommended movies and choose to watch them based on their interests.
+
+
+
+
