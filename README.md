@@ -16,7 +16,7 @@ Web Application: The recommendation system is deployed as a web application usin
 
 How to Use:
 
-Open your web browser and navigate to http://127.0.0.1:5000/.
+Open your web browser and navigate to https://movierecommendationsys-7.onrender.com/ .
 
 Input User ID: Users input their user ID into the web application.
 
