@@ -3,7 +3,7 @@ import pickle
 import pandas as pd
 
 # Load the model
-model = pickle.load(open('movierecc-ml/saved_model.pkl', 'rb'))
+model = pickle.load(open('movierecc-ml/saved_model1.pkl', 'rb'))
 
 st.title("Movie Recommendation System")
 
