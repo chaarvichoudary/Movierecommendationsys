@@ -1,9 +1,4 @@
 import streamlit as st
-import pickle
-import pandas as pd
-
-# Load the model
-model = pickle.load(open('movierecc-ml/saved_model1.pkl', 'rb'))
 
 st.title("Movie Recommendation System")
 
@@ -24,3 +19,4 @@ if st.button("Recommend"):
     st.write("Recommended Movies:")
     for movie in recommendations:
         st.write(movie)
+
