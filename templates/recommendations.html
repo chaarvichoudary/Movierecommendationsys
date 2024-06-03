@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Movie Recommendations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            background-image: url('https://tse1.mm.bing.net/th?id=OIP.OLQ8Q-4LK5AVwpopXV_CTAHaE6&pid=Api&P=0&h=180');
+            background-size: cover;
+            background-position: center;
+        }
+        h1 {
+            color: #333;
+            font-weight: bold; /* Add this line to make the title bolder */
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #fff;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Movie Recommendations for User {{ user_id }}</h1>
+    <ul>
+        {% for movie_title in recommendations %}
+        <li>{{ movie_title }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
