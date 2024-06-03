@@ -1,33 +1,24 @@
-from flask import Flask, request, jsonify, render_template, redirect, url_for
-from movie_recommendation_system import get_recommendations
 
-app = Flask(__name__)
+import streamlit as st
+import pickle
 
-@app.route('/')
-def home():
-    return render_template('home.html')
+# Load the model
+model = pickle.load(open('saved_model.pkl', 'rb'))
 
-@app.route('/recommend', methods=['GET'])
-def recommend():
-    user_id = int(request.args.get('user_id'))
-    num_recommendations = int(request.args.get('num_recommendations', 5))
-    recommendations = get_recommendations(user_id, num_recommendations)
-    if request.accept_mimetypes.accept_json and not request.accept_mimetypes.accept_html:
-        return jsonify(recommendations)
-    else:
-        return render_template('recommendations.html', user_id=user_id, recommendations=recommendations)
+st.title("Movie Recommendation System")
 
-@app.route('/submit', methods=['POST'])
-def submit():
-    user_id = int(request.form['user_id'])
-    return redirect(url_for('recommend', user_id=user_id))
+st.header("Enter the features to get a movie recommendation")
 
-from flask import Flask
+# Collect user input features
+sepal_length = st.number_input('Sepal Length', min_value=0.0, max_value=10.0, step=0.1)
+sepal_width = st.number_input('Sepal Width', min_value=0.0, max_value=10.0, step=0.1)
+petal_length = st.number_input('Petal Length', min_value=0.0, max_value=10.0, step=0.1)
+petal_width = st.number_input('Petal Width', min_value=0.0, max_value=10.0, step=0.1)
 
-app = Flask(__name__)
+# Predict button
+if st.button('Predict'):
+    prediction = model.predict([[sepal_length, sepal_width, petal_length, petal_width]])
+    st.write(f'The predicted class is: {int(prediction[0])}')
 
-# Your Flask routes and other application setup code here...
-
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
-
+if __name__ == '__main__':
+    st.run()
